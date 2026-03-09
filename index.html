@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Contracts Group | Native-Owned Federal Contracting</title>
+  <meta name="description" content="Sovereign Contracts Group is a Native American-owned ISBEE specializing in professional sourcing and fulfilment of federal government contracts through SAM.gov.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://sovereign-contracts.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B3A5C;
+      --navy-dark: #0F2440;
+      --gold: #B8860B;
+      --gold-light: #D4A542;
+      --gold-pale: #F5ECD7;
+      --slate: #6B7B8D;
+      --light-bg: #F8F9FB;
+      --white: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #5A6A7A;
+      --border: #E2E8F0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      background: var(--white);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 2rem;
+    }
+    .nav-logo { height: 50px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text);
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--navy); color: var(--white) !important;
+      padding: 0.5rem 1.25rem; border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #264A6E 100%);
+      position: relative; overflow: hidden;
+      padding: 8rem 2rem 4rem;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 15 L30 12 L25 15 Z' fill='rgba(212,165,66,0.03)'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--white); line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    .hero-text h1 span { color: var(--gold-light); }
+    .hero-text p {
+      color: rgba(255,255,255,0.8); font-size: 1.1rem;
+      max-width: 520px; margin-bottom: 2rem; font-weight: 300;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem;
+    }
+    .badge {
+      background: rgba(212,165,66,0.15); border: 1px solid rgba(212,165,66,0.3);
+      color: var(--gold-light); padding: 0.4rem 1rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+    }
+    .hero-btn {
+      display: inline-block; background: var(--gold);
+      color: var(--white); text-decoration: none;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .hero-visual {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .hero-stat-card {
+      background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .hero-stat-card h3 {
+      color: var(--gold-light); font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .hero-stat-card p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.25rem; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      text-transform: uppercase; letter-spacing: 0.15em;
+      font-size: 0.8rem; font-weight: 600; color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--navy); margin-bottom: 1.25rem; line-height: 1.25;
+    }
+    .section-intro {
+      color: var(--text-light); font-size: 1.05rem; max-width: 680px;
+      margin-bottom: 3rem; line-height: 1.8;
+    }
+
+    /* ===== ABOUT / ISBEE ===== */
+    .about-section { background: var(--light-bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .about-card {
+      background: var(--white); border-radius: 12px; padding: 2rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .about-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .about-card-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; font-size: 1.4rem;
+    }
+    .icon-navy { background: rgba(27,58,92,0.1); color: var(--navy); }
+    .icon-gold { background: rgba(184,134,11,0.1); color: var(--gold); }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem;
+    }
+    .about-card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.75; }
+
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .service-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 8px 30px rgba(184,134,11,0.08);
+    }
+    .service-icon {
+      width: 64px; height: 64px; margin: 0 auto 1.25rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+    }
+    .service-icon svg { width: 28px; height: 28px; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--navy); margin-bottom: 0.75rem;
+    }
+    .service-card p { color: var(--text-light); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ===== FOUNDER ===== */
+    .founder-section { background: var(--light-bg); }
+    .founder-grid {
+      display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start;
+    }
+    .founder-photo {
+      width: 100%; aspect-ratio: 3/4; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .founder-photo-inner {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 3px solid var(--gold-light);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(212,165,66,0.1);
+    }
+    .founder-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: var(--gold-light);
+    }
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--navy); margin-bottom: 0.25rem;
+    }
+    .founder-title-text {
+      color: var(--gold); font-weight: 600; font-size: 0.9rem;
+      margin-bottom: 1.5rem; letter-spacing: 0.03em;
+    }
+    .founder-bio p {
+      color: var(--text-light); font-size: 0.95rem;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .founder-highlights {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .highlight-item {
+      background: var(--white); border-radius: 8px;
+      padding: 1rem; border-left: 3px solid var(--gold);
+    }
+    .highlight-item strong {
+      display: block; font-size: 0.8rem; color: var(--navy);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;
+    }
+    .highlight-item span { color: var(--text-light); font-size: 0.85rem; }
+
+    /* ===== WHY US ===== */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .why-card {
+      text-align: center; padding: 2rem 1.25rem;
+      border-radius: 12px; background: var(--light-bg);
+      transition: transform 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); }
+    .why-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .why-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .why-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.6; }
+
+    /* ===== CTA BAND ===== */
+    .cta-band {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      text-align: center; padding: 4rem 2rem;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 2rem; margin-bottom: 1rem;
+    }
+    .cta-band p {
+      color: rgba(255,255,255,0.7); margin-bottom: 2rem;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .cta-band .hero-btn { font-size: 1rem; padding: 1rem 2.5rem; }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .contact-info-item {
+      display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(27,58,92,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 20px; height: 20px; color: var(--navy); }
+    .contact-info-item h4 { font-size: 0.9rem; color: var(--navy); margin-bottom: 0.2rem; }
+    .contact-info-item p { color: var(--text-light); font-size: 0.9rem; }
+    .contact-info-item a { color: var(--gold); text-decoration: none; }
+    .contact-info-item a:hover { text-decoration: underline; }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 0.9rem;
+      margin-bottom: 1rem; transition: border-color 0.2s;
+      background: var(--light-bg);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form button {
+      background: var(--navy); color: var(--white); border: none;
+      padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer; transition: background 0.2s;
+    }
+    .contact-form button:hover { background: var(--gold); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-dark); color: rgba(255,255,255,0.5);
+      padding: 3rem 2rem 1.5rem; text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo { height: 40px; margin-bottom: 1.5rem; opacity: 0.8; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy { font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+    .footer-badges { margin-bottom: 1rem; }
+    .footer-badge {
+      display: inline-block; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.3rem 0.8rem; border-radius: 4px;
+      font-size: 0.75rem; color: rgba(255,255,255,0.6);
+      margin: 0.25rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .founder-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--white); padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+    }
+    @media (max-width: 600px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .founder-highlights { grid-template-columns: 1fr; }
+      section { padding: 3rem 1.25rem; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Fallback: if JS hasn't run after 2s, show everything */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <svg class="nav-logo" viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#B8860B"/><stop offset="100%" stop-color="#D4A542"/></linearGradient></defs>
+      <path d="M40,15 L90,15 L90,75 L65,105 L40,75 Z" fill="#1B3A5C" stroke="#B8860B" stroke-width="2.5"/>
+      <path d="M55,40 L65,28 L75,40" fill="none" stroke="#D4A542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50,55 L65,40 L80,55" fill="none" stroke="#D4A542" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="65,22 67,26 71,26 68,29 69,33 65,30.5 61,33 62,29 59,26 63,26" fill="#D4A542"/>
+      <text x="110" y="52" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="#1B3A5C" letter-spacing="1">SOVEREIGN</text>
+      <text x="110" y="88" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="#1B3A5C" letter-spacing="1">CONTRACTS</text>
+      <line x1="110" y1="96" x2="410" y2="96" stroke="url(#ag)" stroke-width="2"/>
+      <text x="110" y="118" font-family="Arial,sans-serif" font-size="18" fill="#6B7B8D" letter-spacing="8">G R O U P</text>
+    </svg>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#founder">Leadership</a></li>
+      <li><a href="#why">Why SCG</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badges">
+        <span class="badge">ISBEE CERTIFIED</span>
+        <span class="badge">NATIVE-OWNED</span>
+        <span class="badge">SAM.GOV REGISTERED</span>
+      </div>
+      <h1>Professional Sourcing &amp; Fulfilment for <span>Federal Contracts</span></h1>
+      <p>Sovereign Contracts Group is an Indian Small Business Economic Enterprise (ISBEE) delivering quality products and services to federal agencies including BIA, BIE, and IHS through the Buy Indian Act procurement pathway.</p>
+      <a href="#contact" class="hero-btn">Start a Conversation</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stat-card">
+        <h3>$1.14B+</h3>
+        <p>FY2024 Buy Indian Act obligations within DOI Indian Affairs&mdash;a growing market for ISBEE-eligible firms.</p>
+      </div>
+      <div class="hero-stat-card">
+        <h3>$840M+</h3>
+        <p>FY2024 ISBEE obligations, with projections reaching $1.2&ndash;$1.4B by FY2026.</p>
+      </div>
+      <div class="hero-stat-card">
+        <h3>73&ndash;80%</h3>
+        <p>ISBEE share of Buy Indian obligations, growing as vendor readiness improves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / ISBEE -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-label fade-in">About Us</div>
+    <h2 class="section-title fade-in">Bridging Native Enterprise &amp; Federal Procurement</h2>
+    <p class="section-intro fade-in">Sovereign Contracts Group, LLC is a Native American&ndash;owned Indian Small Business Economic Enterprise (ISBEE) founded to deliver exceptional products and services to federal agencies. We operate within the Buy Indian Act procurement framework, one of the most structurally advantaged federal market channels available to Native American firms.</p>
+
+    <div class="about-grid">
+      <div class="about-card fade-in">
+        <div class="about-card-icon icon-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>What is an ISBEE?</h3>
+        <p>An Indian Small Business Economic Enterprise (ISBEE) is an Indian Economic Enterprise (IEE) that also qualifies as a small business under SBA size standards. Federal contracting officers must give priority to ISBEEs for all purchases, regardless of dollar value, through set-aside or sole-source awards.</p>
+      </div>
+      <div class="about-card fade-in">
+        <div class="about-card-icon icon-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Buy Indian Act</h3>
+        <p>The Buy Indian Act is a statutory preference authority requiring covered agencies to use Buy Indian procurement &ldquo;whenever practicable.&rdquo; Within DOI Indian Affairs (BIA and BIE), this means ISBEE consideration comes first&mdash;and departing from this preference requires a formal written deviation.</p>
+      </div>
+      <div class="about-card fade-in">
+        <div class="about-card-icon icon-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Our Mission</h3>
+        <p>We exist to demonstrate that the products and services delivered to agencies like IHS, BIE, and BIA can and should reflect the highest standards of quality and attention to detail&mdash;sourced and fulfilled by a Native-owned enterprise deeply committed to the communities these agencies serve.</p>
+      </div>
+      <div class="about-card fade-in">
+        <div class="about-card-icon icon-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>SAM.gov Registered</h3>
+        <p>Sovereign Contracts Group is fully registered on SAM.gov and actively monitors federal contracting opportunities across the DOI, IHS, and related agencies. We are positioned to respond to solicitations under ISBEE set-aside and sole-source procurement pathways.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label fade-in">What We Do</div>
+    <h2 class="section-title fade-in">Capabilities &amp; Service Areas</h2>
+    <p class="section-intro fade-in">We deliver across the full range of supply categories covered by the Buy Indian Act framework&mdash;from recurring facility supplies to specialized professional services.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Facilities &amp; MRO Supplies</h3>
+        <p>Building repair materials, hardware, electrical and plumbing supplies, safety equipment, tools, and consumables supporting recurring maintenance for BIA and tribal facilities.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Education &amp; Campus Products</h3>
+        <p>Classroom and office supplies, furniture, custodial and janitorial products, cafeteria supplies, and end-user IT equipment for BIE schools and campuses.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Healthcare Facility Supplies</h3>
+        <p>Maintenance, safety, and engineering supplies supporting IHS healthcare facilities. Facility consumables, clinical support supplies, and recurring operational materials.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Logistics &amp; Distribution</h3>
+        <p>End-to-end sourcing, warehousing, and distribution of products to federal and tribal facilities. We manage supply chains with precision and accountability.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Professional Services</h3>
+        <p>Program support, administrative services, and project coordination for federal agencies. We bring deep familiarity with federal compliance and reporting requirements.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A542" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Quality Assurance</h3>
+        <p>Every contract we fulfil is backed by disciplined quality controls, compliance documentation, and a commitment to exceeding agency expectations on every delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section" id="founder">
+  <div class="container">
+    <div class="section-label fade-in">Leadership</div>
+    <h2 class="section-title fade-in">Meet Our Founder</h2>
+    <div class="founder-grid fade-in">
+      <div class="founder-photo">
+        <div class="founder-photo-inner">
+          <span class="founder-initials">TLP</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="founder-name">Tessa L. Pieper</h3>
+        <p class="founder-title-text">Chief Executive Officer &bull; Enrolled Member, Menominee Indian Tribe of Wisconsin</p>
+        <div class="founder-bio">
+          <p>Tessa L. Pieper founded Sovereign Contracts Group on a deeply held belief: that federal agencies serving Native communities deserve products and services that reflect the highest standards of quality&mdash;delivered by a Native-owned enterprise with real roots in the communities being served.</p>
+          <p>With more than a decade of experience at the intersection of tribal governance, federal programs, and community service, Tessa brings firsthand knowledge of the agencies SCG serves. She spent five years as a Billing Specialist at the Menominee Tribal Clinic, gaining direct experience with IHS operations and federal compliance requirements. She later managed the tribe&rsquo;s $2.5M Emergency Rental Assistance Program and a $1M Homeowners Assistance Fund, overseeing quarterly and annual federal reporting to the Department of the Treasury.</p>
+          <p>Most recently, Tessa served as Building Coordinator and Manager for Menominee Tribal Facilities, overseeing a $2.3M budget across 51+ tribal buildings&mdash;managing vendor relationships, procurement, and operations at the kind of scale that translates directly to federal contracting.</p>
+        </div>
+        <div class="founder-highlights">
+          <div class="highlight-item">
+            <strong>Federal Programs</strong>
+            <span>10+ years managing multimillion-dollar tribal and federal programs</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Agency Knowledge</strong>
+            <span>Direct experience with IHS, BIA, and Treasury operations</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Facilities Management</strong>
+            <span>51+ buildings, $2.3M budget, full procurement oversight</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Community Commitment</strong>
+            <span>Lifelong Menominee reservation resident and advocate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SCG -->
+<section id="why">
+  <div class="container">
+    <div class="section-label fade-in">Why Choose Us</div>
+    <h2 class="section-title fade-in">The Sovereign Contracts Advantage</h2>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-number">01</div>
+        <h3>ISBEE Priority</h3>
+        <p>As a certified ISBEE, we qualify for set-aside and sole-source federal contracts under the Buy Indian Act&mdash;the most structurally advantaged procurement channel for agencies like BIA, BIE, and IHS.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">02</div>
+        <h3>Agency Expertise</h3>
+        <p>Our leadership team has direct, hands-on experience with IHS operations, BIA programs, and federal compliance&mdash;we understand how these agencies work from the inside.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">03</div>
+        <h3>Quality First</h3>
+        <p>Every order is sourced with care and fulfilled with precision. We believe the products and services reaching Native communities should meet the highest standards, every time.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">04</div>
+        <h3>Community Driven</h3>
+        <p>Founded by a Menominee tribal member, SCG is built on the conviction that Native-owned businesses can and should lead in delivering for the communities they belong to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Ready to Partner with a Trusted ISBEE?</h2>
+  <p>Whether you&rsquo;re a contracting officer seeking qualified ISBEE vendors or a teaming partner looking to collaborate, we&rsquo;re ready to deliver.</p>
+  <a href="#contact" class="hero-btn">Get in Touch</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label fade-in">Contact</div>
+    <h2 class="section-title fade-in">Let&rsquo;s Work Together</h2>
+    <p class="section-intro fade-in">Reach out to discuss contracting opportunities, teaming arrangements, or to learn more about Sovereign Contracts Group.</p>
+    <div class="contact-grid">
+      <div class="fade-in">
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Menominee Indian Reservation, Wisconsin</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@sovereign-contracts.com">info@sovereign-contracts.com</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <h4>Website</h4>
+            <p><a href="https://sovereign-contracts.com">sovereign-contracts.com</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <h4>SAM.gov</h4>
+            <p>Registered &amp; Active &mdash; ISBEE / IEE Eligible</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form fade-in" onsubmit="event.preventDefault(); alert('Thank you for your message. We will be in touch shortly.');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Organization / Agency">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="How can we help you?"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <svg class="footer-logo" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40,15 L90,15 L90,75 L65,105 L40,75 Z" fill="none" stroke="#D4A542" stroke-width="2.5"/>
+      <path d="M55,40 L65,28 L75,40" fill="none" stroke="#D4A542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50,55 L65,40 L80,55" fill="none" stroke="#D4A542" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="65,22 67,26 71,26 68,29 69,33 65,30.5 61,33 62,29 59,26 63,26" fill="#D4A542"/>
+      <text x="110" y="52" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="#FFFFFF" letter-spacing="1">SOVEREIGN</text>
+      <text x="110" y="88" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="#FFFFFF" letter-spacing="1">CONTRACTS</text>
+      <text x="110" y="110" font-family="Arial,sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" letter-spacing="8">G R O U P</text>
+    </svg>
+    <div class="footer-badges">
+      <span class="footer-badge">ISBEE Certified</span>
+      <span class="footer-badge">Native-Owned</span>
+      <span class="footer-badge">SAM.gov Registered</span>
+      <span class="footer-badge">Buy Indian Act Eligible</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#founder">Leadership</a></li>
+      <li><a href="#why">Why SCG</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Sovereign Contracts Group, LLC. All rights reserved. &nbsp;|&nbsp; Native-Owned ISBEE &nbsp;|&nbsp; Menominee Indian Reservation, Wisconsin</p>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Fade-in on scroll
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px 50px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+  // Safety: reveal all after 3s in case observer doesn't fire
+  setTimeout(() => { fadeEls.forEach(el => el.classList.add('visible')); }, 3000);
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
